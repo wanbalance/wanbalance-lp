@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanBalance - 愛犬のための栄養管理＆レシピ共有アプリ</title>
+    <meta name="description" content="愛犬の栄養バランスを簡単にチェック！手作りご飯のレシピ共有、フード管理、日記機能もついた愛犬家のための必須アプリ「WanBalance」">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Zen Maru Gothic', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .mockup-image { object-fit: cover; object-position: top; }
+        /* 浮遊アニメーション */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 6s ease-in-out infinite 3s; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { light: '#FFD166', DEFAULT: '#F4A261', dark: '#E76F51' },
+                        accent: '#2A9D8F'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-700 bg-orange-50/50">
+
+    <header class="bg-white/90 backdrop-blur-md shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-brand-dark flex items-center gap-2">
+                <i class="fa-solid fa-paw"></i> WanBalance
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#nutrition" class="hover:text-brand-DEFAULT transition">栄養計算</a>
+                <a href="#recipe" class="hover:text-brand-DEFAULT transition">レシピ</a>
+                <a href="#food" class="hover:text-brand-DEFAULT transition">フード管理</a>
+                <a href="#diary" class="hover:text-brand-DEFAULT transition">日記</a>
+                <a href="https://drive.google.com/file/d/1SQwIFOkBIOfBxuc6xRS7iREY4p5FkkrJ/view?usp=drive_link" target="_blank" class="bg-brand-DEFAULT text-white px-6 py-2 rounded-full font-bold hover:bg-brand-dark transition shadow-lg flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i> 先行ダウンロード
+                </a>
+            </nav>
+            <button class="md:hidden text-2xl text-brand-dark" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4">
+            <a href="#nutrition" class="block py-2 hover:text-brand-DEFAULT">栄養計算</a>
+            <a href="#recipe" class="block py-2 hover:text-brand-DEFAULT">レシピ</a>
+            <a href="#food" class="block py-2 hover:text-brand-DEFAULT">フード管理</a>
+            <a href="#diary" class="block py-2 hover:text-brand-DEFAULT">日記</a>
+            <a href="https://drive.google.com/file/d/1SQwIFOkBIOfBxuc6xRS7iREY4p5FkkrJ/view?usp=drive_link" target="_blank" class="block py-2 text-brand-dark font-bold">先行ダウンロード</a>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-20 bg-gradient-to-br from-orange-100 via-white to-orange-50 overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0 z-10">
+                <span class="inline-block bg-accent text-white px-3 py-1 rounded-full text-sm mb-4 font-bold tracking-wider">NEW RELEASE</span>
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-800">
+                    愛犬の「おいしい」と<br>
+                    <span class="text-brand-dark">「健康」</span>を、これひとつで。
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    栄養計算からフード購入、思い出の記録まで。<br>
+                    現在、Google Playでの正式リリースに向けた<br>
+                    <span class="font-bold text-brand-dark">先行ベータ版を無料配布中</span>です！
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
+                    <a href="https://drive.google.com/file/d/1SQwIFOkBIOfBxuc6xRS7iREY4p5FkkrJ/view?usp=drive_link" target="_blank" class="flex items-center justify-center gap-3 bg-brand-dark text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition shadow-lg w-full sm:w-auto transform hover:scale-105">
+                        <i class="fa-brands fa-google-drive text-2xl"></i>
+                        <div class="text-left">
+                            <div class="text-xs">先行お試し</div>
+                            <div class="text-lg font-bold leading-none">先行ダウンロード</div>
+                        </div>
+                    </a>
+
+                    <div class="relative group cursor-not-allowed opacity-60 grayscale">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-[10px] px-2 py-1 rounded-full whitespace-nowrap z-10">
+                            近日公開予定
+                        </div>
+                        <div class="flex items-center justify-center gap-3 bg-gray-900 text-white px-6 py-3 rounded-lg w-full sm:w-auto pointer-events-none">
+                            <i class="fa-brands fa-google-play text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Coming Soon</div>
+                                <div class="text-lg font-bold leading-none">Google Play</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4 text-xs text-gray-500">※Android端末向けのアプリ(.apk)です。</p>
+            </div>
+
+            <div class="md:w-1/2 flex justify-center relative">
+                <div class="relative w-72 h-[580px] bg-gray-900 rounded-[3rem] border-8 border-gray-900 shadow-2xl overflow-hidden z-20">
+                    <img src="img_recipe.jpg" alt="WanBalance App" class="w-full h-full mockup-image bg-white">
+                </div>
+                <div class="absolute top-10 right-10 w-64 h-64 bg-brand-light rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-blob"></div>
+                <div class="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-blob animation-delay-2000"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="space-y-24 py-20">
+
+        <section id="nutrition" class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 md:w-72 bg-gray-900 rounded-[2.5rem] border-4 border-gray-900 shadow-xl overflow-hidden">
+                        <img src="img_nutrition.jpg" alt="栄養計算画面" class="w-full h-auto mockup-image bg-white">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-3 rounded-xl inline-block text-brand-dark mb-4 shadow-sm">
+                        <i class="fa-solid fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4 text-gray-800">AIによる栄養バランス診断</h2>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        「手作りごはんだと栄養が偏らないか心配…」<br>
+                        そんな悩みも解決。食材を入力するだけで、カロリーや栄養バランスを自動計算。
+                        愛犬のデータに基づいた「不足分」が一目でわかり、健康管理がもっと手軽になります。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recipe" class="bg-white py-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="relative w-64 md:w-72 bg-gray-900 rounded-[2.5rem] border-4 border-gray-900 shadow-xl overflow-hidden">
+                            <img src="img_recipe.jpg" alt="レシピ一覧画面" class="w-full h-auto mockup-image bg-white">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="bg-orange-100 p-3 rounded-xl inline-block text-brand-dark mb-4 shadow-sm">
+                            <i class="fa-solid fa-utensils text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4 text-gray-800">みんなのレシピと出会う</h2>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            自慢の手作りごはんを投稿したり、他の飼い主さんのレシピを参考にしたり。
+                            「お腹に優しい」「ダイエット中」など、目的別のレシピ検索も簡単。
+                            毎日のごはん作りがもっと楽しくなるアイデアがいっぱいです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="food" class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 flex justify-center gap-4 relative">
+                    <div class="w-48 md:w-56 bg-gray-900 rounded-[2rem] border-4 border-gray-900 shadow-xl overflow-hidden transform translate-y-8 animate-float-delayed">
+                        <img src="img_food_list.jpg" alt="フード一覧" class="w-full h-auto mockup-image bg-white">
+                    </div>
+                    <div class="w-48 md:w-56 bg-gray-900 rounded-[2rem] border-4 border-gray-900 shadow-xl overflow-hidden transform -translate-y-4 animate-float">
+                        <img src="img_food_modal.jpg" alt="フード詳細・購入" class="w-full h-auto mockup-image bg-white">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-3 rounded-xl inline-block text-brand-dark mb-4 shadow-sm">
+                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4 text-gray-800">市販フードも賢く管理・購入</h2>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        よく食べる市販フードの栄養素も登録済み。
+                        人気ランキングから新しいフードを探したり、ストックが無くなりそうな時は
+                        詳細画面からそのまま購入サイトへ移動可能。買い忘れを防ぎます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="diary" class="bg-orange-50 py-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2 flex justify-center gap-4 relative">
+                        <div class="w-48 md:w-56 bg-gray-900 rounded-[2rem] border-4 border-gray-900 shadow-xl overflow-hidden transform translate-y-6 animate-float">
+                            <img src="img_diary_list.png" alt="日記一覧" class="w-full h-auto mockup-image bg-white">
+                        </div>
+                        <div class="w-48 md:w-56 bg-gray-900 rounded-[2rem] border-4 border-gray-900 shadow-xl overflow-hidden transform -translate-y-6 animate-float-delayed">
+                            <img src="img_diary_write.jpg" alt="日記投稿" class="w-full h-auto mockup-image bg-white">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="bg-white p-3 rounded-xl inline-block text-brand-dark mb-4 shadow-sm">
+                            <i class="fa-solid fa-book-open text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4 text-gray-800">大切な思い出と健康を記録</h2>
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            「今日はドッグランで遊んだよ！」
+                            写真付きの日記で、楽しい思い出をずっと残せます。
+                            体調の変化や排泄の様子も一緒に記録できるので、獣医師への相談時にも役立つ
+                            あなたの愛犬専用の健康手帳になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section id="download" class="py-24 bg-brand-DEFAULT text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">愛犬との毎日をもっと幸せに。</h2>
+            <p class="text-xl mb-12 opacity-90">WanBalanceで、今日から始める健康管理。<br>まずはベータ版を無料でお試しください。</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                 <a href="https://drive.google.com/file/d/1SQwIFOkBIOfBxuc6xRS7iREY4p5FkkrJ/view?usp=drive_link" target="_blank" class="flex items-center justify-center gap-3 bg-white text-brand-dark px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition shadow-lg w-full sm:w-auto transform hover:scale-105">
+                    <i class="fa-brands fa-google-drive text-3xl"></i>
+                    <div class="text-left">
+                        <div class="text-xs text-gray-500">先行お試し</div>
+                        <div class="text-xl leading-none font-extrabold">先行ダウンロード</div>
+                    </div>
+                </a>
+
+                <div class="relative group cursor-not-allowed opacity-60 grayscale">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-[10px] px-2 py-1 rounded-full whitespace-nowrap z-10">
+                        近日公開予定
+                    </div>
+                    <div class="flex items-center justify-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-xl w-full sm:w-auto pointer-events-none">
+                        <i class="fa-brands fa-google-play text-3xl"></i>
+                        <div class="text-left">
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                            <div class="text-xl leading-none">Google Play</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-white mb-2"><i class="fa-solid fa-paw"></i> WanBalance</h3>
+                    <p class="text-sm opacity-70">愛犬のための栄養管理＆レシピ共有プラットフォーム</p>
+                </div>
+                <div class="flex space-x-8 text-sm font-bold">
+                    <a href="terms.html" class="hover:text-white transition">利用規約</a>
+                    <a href="privacy.html" class="hover:text-white transition">プライバシーポリシー</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSex4h45UiRiivu5t-qsujvLZYMWYGTbZwgnoFqjC01MvLHOUw/viewform?usp=header" target="_blank" class="hover:text-white transition">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-8 text-center text-xs opacity-50">
+                &copy; 2026 WanBalance All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
